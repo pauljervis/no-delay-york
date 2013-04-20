@@ -1,0 +1,3 @@
+# Module designui
+# RPC service class, partial path of RPC policy file
+com.appstore.yorknodelays.client.GreetingService, 7FB8876C4653DA58EBF98D30F9977BD6.gwt.rpc

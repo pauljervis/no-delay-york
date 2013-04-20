@@ -1,0 +1,2 @@
+serviceClass: com.appstore.yorknodelays.client.GreetingService
+path: 7FB8876C4653DA58EBF98D30F9977BD6.gwt.rpc
