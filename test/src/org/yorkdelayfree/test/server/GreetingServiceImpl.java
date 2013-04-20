@@ -1,7 +1,12 @@
 package org.yorkdelayfree.test.server;
 
+
 import org.yorkdelayfree.test.client.GreetingService;
 import org.yorkdelayfree.test.shared.FieldVerifier;
+
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
@@ -19,7 +24,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 			throw new IllegalArgumentException(
 					"Name must be at least 4 characters long");
 		}
-
+		
 		String serverInfo = getServletContext().getServerInfo();
 		String userAgent = getThreadLocalRequest().getHeader("User-Agent");
 

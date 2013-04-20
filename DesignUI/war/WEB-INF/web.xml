@@ -8,7 +8,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.appstore.yorknodelays.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>org.yorkdelayfree.test.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
