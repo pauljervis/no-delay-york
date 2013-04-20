@@ -1,0 +1,2 @@
+serviceClass: org.yorkdelayfree.test.client.GreetingService
+path: D8C0775FA4787DA9645A3B42F647D219.gwt.rpc
