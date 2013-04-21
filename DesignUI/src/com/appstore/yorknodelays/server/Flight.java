@@ -62,6 +62,12 @@ public class Flight {
 	public void setAircraft(Aircraft aircraft) {
 		this.aircraft = aircraft;
 	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
 	
 	
 }

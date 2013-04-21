@@ -12,7 +12,7 @@ public class Route {
 	private Airport destinationAirport;
 	private Gate destinationGate;
 	private Weather weather;
-	private Airzone airzoneIntersected;
+	private Airspace airspaceIntersected;
 	private boolean active;
 	
 	public void setName(String name)					{ this.name = name; }
@@ -25,7 +25,7 @@ public class Route {
 	public void setDestinationAirport(Airport airport)	{ this.destinationAirport = airport; }
 	public void setDestinationGate(Gate gate)			{ this.destinationGate = gate; }
 	public void setWeather(Weather weather)				{ this.weather = weather; }
-	public void setAirzoneIntersected(Airzone airzone)	{ this.airzoneIntersected = airzone; }
+	public void setAirzoneIntersected(Airspace airspace){ this.airspaceIntersected = airspace; }
 	public void setActive(boolean active)				{ this.active = active; }
 	
 	public String getName() {
@@ -58,8 +58,8 @@ public class Route {
 	public Weather getWeather() {
 		return weather;
 	}
-	public Airzone getAirzoneIntersected() {
-		return airzoneIntersected;
+	public Airspace getAirspaceIntersected() {
+		return airspaceIntersected;
 	}
 	public boolean isActive() {
 		return active;
