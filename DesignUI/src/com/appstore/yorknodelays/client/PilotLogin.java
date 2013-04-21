@@ -375,7 +375,8 @@ public class PilotLogin implements EntryPoint {
 	    panel.addButton(new TextButton("Pilot"));
 	    panel.addButton(new TextButton("Dispatcher"));
 	    panel.addButton(new TextButton("Controller"));
-	    vp.add(panel); */
+	    */
+	    vp.add(panel);
 	  }
 	 
 	 /* private void createForm2() {
