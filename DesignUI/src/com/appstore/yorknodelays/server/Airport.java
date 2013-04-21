@@ -2,6 +2,10 @@ package com.appstore.yorknodelays.server;
 
 import java.util.List;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 public class Airport {
 	
 	private List<Gate> gate;
@@ -12,9 +16,45 @@ public class Airport {
 	private List<Runway> runway;
 	private String id;
 	private String name;
-	private String threeCode;
-	private String fourCode;
+	private String threeCode;		// Three character Airport Identifier
+	private String fourCode;		// Four character Airport Identifier
 	private boolean active;
+	
+	
+	public boolean addAirportToDatabase(String key) {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Airport", key);
+		e = addAirportToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public boolean addAirportToDatabase() {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Airport");
+		e = addAirportToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public Entity addAirportToEntity(Entity e) {
+		
+		e.setProperty("id", id);
+		e.setProperty("weather", weather);
+		//TODO: Implement Location.toString() method
+		e.setProperty("location", location.toString());
+		e.setProperty("name", name);
+		e.setProperty("threeCode", threeCode);
+		e.setProperty("fourCode", fourCode);
+		e.setProperty("active", active);
+		
+		return e;
+	}
+	
 	
 	
 	public List<Gate> getGate() {
@@ -56,7 +96,7 @@ public class Airport {
 	public void setAirline(List<Airline> airline) {
 		this.airline = airline;
 	}
-	public void setRoute(List<Routes> route) {
+	public void setRoute(List<Route> route) {
 		this.route = route;
 	}
 	public void setWeather(Weather weather) {

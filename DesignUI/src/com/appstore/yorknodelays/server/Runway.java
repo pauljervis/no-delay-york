@@ -2,8 +2,13 @@ package com.appstore.yorknodelays.server;
 
 import java.util.List;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 public class Runway {
 	
+	private String id;
 	private Airport airport;
 	private float bearing1;
 	private float bearing2;
@@ -13,6 +18,42 @@ public class Runway {
 	private boolean held;
 	private int cleanTime;
 	private List<Airline> airline;
+	
+	public boolean addRunwayToDatabase(String key) {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Runway", key);
+		e = addRunwayToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public boolean addRunwayToDatabase() {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Runway");
+		e = addRunwayToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public Entity addRunwayToEntity(Entity e) {
+		
+		e.setProperty("id", id);
+		e.setProperty("airport", airport);
+		e.setProperty("bearing1", bearing1);
+		e.setProperty("bearing2", bearing2);
+		e.setProperty("weather", weather);
+		e.setProperty("active", active);
+		e.setProperty("inUse", inUse);
+		e.setProperty("held", held);
+		e.setProperty("cleanTime", cleanTime);
+		e.setProperty("airline", airline);
+		
+		return e;
+	}
 
 	public Airport getAirport() {
 		return airport;

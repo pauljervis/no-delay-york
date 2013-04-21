@@ -2,16 +2,51 @@ package com.appstore.yorknodelays.server;
 
 import java.util.List;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 public class Airspace {
 	
+	private int id;
 	private Weather weather;
 	private Location location;		// Lower left corner (defines {0,0} )
-	private float size;
+	private float size; 			// Length/Width dimension of square airspace
 	private List<Route> routes;
 	private List<Aircraft> aircrafts;
 	private List<Airport> airports;
 	private List<Airspace> neighbours;
 	private WeatherOracle weatherOrcale;
+	
+	public boolean addAirspaceToDatabase(String key) {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Airspace", key);
+		e = addAirspaceToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public boolean addAirspaceToDatabase() {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Airspace");
+		e = addAirspaceToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public Entity addAirspaceToEntity(Entity e) {
+		
+		e.setProperty("id", id);
+		e.setProperty("weather", weather);
+		e.setProperty("location", location);
+		e.setProperty("size", size);
+		
+		return e;
+	}
 	
 	public Weather getWeather() {
 		return weather;
