@@ -90,10 +90,9 @@ public class Login implements EntryPoint {
 
     pilotLogin.addClickHandler(new ClickHandler() {
     	public void onClick(ClickEvent event) {
-    		Panel root = RootPanel.get();
-    		PilotLogin login = GWT.create(PilotLogin.class);
-	   		root.clear();
-	   		root.add(login.asWidget());
+    		PilotLogin pilotLogin = GWT.create(PilotLogin.class);
+	   		vp.clear();
+	   		vp.add(pilotLogin.asWidget());
 	    }
     });
 	    
