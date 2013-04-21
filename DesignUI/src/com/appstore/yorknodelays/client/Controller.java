@@ -1,4 +1,3 @@
-
 /**
  * Sencha GXT 3.0.1 - Sencha for GWT
  * Copyright(c) 2007-2012, Sencha, Inc.
@@ -10,10 +9,13 @@ package com.appstore.yorknodelays.client;
  
 import java.util.ArrayList;
 import java.util.List;
+
+import com.appstore.yorknodelays.server.Flight;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.editor.client.Editor.Path;
 import com.google.gwt.editor.client.SimpleBeanEditorDriver;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
@@ -23,7 +25,12 @@ import com.sencha.gxt.examples.resources.client.model.Person; */
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
+import com.sencha.gxt.core.client.ValueProvider;
 import com.sencha.gxt.core.client.util.DateWrapper;
+import com.sencha.gxt.data.client.editor.ListStoreEditor;
+import com.sencha.gxt.data.shared.ListStore;
+import com.sencha.gxt.data.shared.ModelKeyProvider;
+import com.sencha.gxt.data.shared.PropertyAccess;
 /*import com.sencha.gxt.examples.resources.client.model.Kid;
 import com.sencha.gxt.examples.resources.client.model.Person;
 import com.sencha.gxt.explorer.client.model.Example.Detail;*/
@@ -35,6 +42,8 @@ import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer;
 import com.sencha.gxt.widget.core.client.container.HorizontalLayoutContainer.HorizontalLayoutData;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
+import com.sencha.gxt.widget.core.client.form.FieldLabel;
+import com.sencha.gxt.widget.core.client.form.FormPanel.LabelAlign;
 import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
 import com.sencha.gxt.widget.core.client.grid.ColumnModel;
 import com.sencha.gxt.widget.core.client.grid.Grid;
@@ -43,20 +52,38 @@ import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
     
 public class Controller implements EntryPoint, IsWidget {
 	
+	interface FlightProperties extends PropertyAccess<Flight> {
+	    ModelKeyProvider<Flight> id();
+	    
+	    @Path("id")
+	    ValueProvider<Flight, String> flightId();
+	     
+	    @Path("destination.id")
+	    ValueProvider<Flight, String> destination();
+	    @Path("departure.id")
+	    ValueProvider<Flight, String> origin();
+	    
+	    ValueProvider<Flight, String> remarks();
+	}
+	
+	private static final FlightProperties props = GWT.create(FlightProperties.class);
+	
 	private Label Label;
-	 /* TextField name = new TextField();
-	  TextField company = new TextField();
-	  TextField location = new TextField();
+	
+/* TextField name = new TextField();
+  TextField company = new TextField();
+  TextField location = new TextField();
+   
+  NumberField<Double> income = new NumberField<Double>(new DoublePropertyEditor()); */
+   
+	ListStore<Flight> flightStore = new ListStore<Flight>(props.id());
+	ListStoreEditor<Flight> flights = new ListStoreEditor<Flight>(flightStore); 
+   
 	   
-	  NumberField<Double> income = new NumberField<Double>(new DoublePropertyEditor()); */
-	   
-	  ListStore<Kid> kidStore = new ListStore<Kid>(props.key());
-	  ListStoreEditor<Kid> kids = new ListStoreEditor<Kid>(kidStore); 
-	   
-	   
-	  @Override
-	  public Widget asWidget() {
-	    FlowPanel container = new FlowPanel();
+	@Override
+	public Widget asWidget() {
+	
+		FlowPanel container = new FlowPanel();
 	     
 	     
 	    // should be layout based
@@ -72,21 +99,22 @@ public class Controller implements EntryPoint, IsWidget {
 	     
 	    container.add(new FieldLabel(income, "Income")); */
 	     
-	    List<ColumnConfig<Kid, ?>> columns = new ArrayList<ColumnConfig<Kid,?>>();
-	    ColumnConfig<Kid, String> name = new ColumnConfig<Kid, String>(props.name(), 200, "Fligt Name");
+	    List<ColumnConfig<Flight, ?>> columns = new ArrayList<ColumnConfig<Flight,?>>();
+	    ColumnConfig<Flight, String> name = new ColumnConfig<Flight, String>(props.flightId(), 200, "Fligt Name");
 	    columns.add(name);
-	    ColumnConfig<Kid, String> age = new ColumnConfig<Kid, String>(props.age(), 100, "Origin");
-	    columns.add(age);
+	    ColumnConfig<Flight, String> origin = new ColumnConfig<Flight, String>(props.origin(), 100, "Origin");
+	    columns.add(origin);
+	    ColumnConfig<Flight, String> destination = new ColumnConfig<Flight, String>(props.destination(), 100, "Destination");
+	    columns.add(destination);
+	    ColumnConfig<Flight, String> remarks = new ColumnConfig<Flight, String>(props.remarks(), 100, "Remarks");
+	    columns.add(remarks);
 	     
-	     
-	    Grid<Kid> grid = new Grid<Kid>(kidStore, new ColumnModel<Kid>(columns));
+	    Grid<Flight> grid = new Grid<Flight>(flightStore, new ColumnModel<Flight>(columns));
 	    grid.setBorders(true);
 	     
 	    grid.getView().setForceFit(true);
-	    GridInlineEditing<Kid> inlineEditor = new GridInlineEditing<Kid>(grid);
-	    inlineEditor.addEditor(name, new TextField());
-	    inlineEditor.addEditor(age, new NumberField<Integer>(new IntegerPropertyEditor()));
-	 
+	    GridInlineEditing<Flight> inlineEditor = new GridInlineEditing<Flight>(grid);
+	    
 	    grid.setWidth(382);
 	    grid.setHeight(200);
 	     
@@ -95,15 +123,8 @@ public class Controller implements EntryPoint, IsWidget {
 	    kidsContainer.setLabelAlign(LabelAlign.TOP);
 	    kidsContainer.setWidget(grid);
 	    container.add(kidsContainer);
-	  return container;
-	  }
-// interface Driver extends SimpleBeanEditorDriver<Person, PersonEditor> {}
-   
- // private Driver driver = GWT.create(Driver.class);
-   
-  @Override
- 
-  public Widget asWidget() {
+	    
+	  
     FramedPanel panel = new FramedPanel();
     panel.setHeadingText("Real Time Flight Information");
     panel.setBodyBorder(false);
@@ -138,7 +159,7 @@ public class Controller implements EntryPoint, IsWidget {
 	 
     p.add(spinLabel, new VerticalLayoutData(1, -1));
  
-    return panel;
+    return container;
    
   }
  
@@ -146,6 +167,5 @@ public class Controller implements EntryPoint, IsWidget {
   public void onModuleLoad() { 
     RootPanel.get().add(this);
   }
- }
  
 }
