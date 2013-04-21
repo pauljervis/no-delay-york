@@ -6,7 +6,7 @@
  *
  * http://www.sencha.com/products/gxt/license/
  */
-package com.sencha.gxt.explorer.client.forms;
+package com.appstore.yorknodelays.client;
  
 import java.util.Date;
  
@@ -19,6 +19,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat.PredefinedFormat;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -29,9 +30,6 @@ import com.sencha.gxt.cell.core.client.form.ComboBoxCell.TriggerAction;
 import com.sencha.gxt.core.client.util.DateWrapper;
 import com.sencha.gxt.core.client.util.ToggleGroup;
 import com.sencha.gxt.data.shared.ListStore;
-import com.sencha.gxt.examples.resources.client.TestData;
-import com.sencha.gxt.examples.resources.client.model.Stock;
-import com.sencha.gxt.examples.resources.client.model.StockProperties;
 import com.sencha.gxt.widget.core.client.FramedPanel;
 import com.sencha.gxt.widget.core.client.container.VerticalLayoutContainer;
 /*import com.sencha.gxt.explorer.client.model.Example.Detail;
@@ -60,461 +58,193 @@ import com.sencha.gxt.widget.core.client.form.validator.MinDateValidator;
 import com.sencha.gxt.widget.core.client.form.validator.MinLengthValidator;
 import com.sencha.gxt.widget.core.client.info.Info;*/
  
-public class FormsExample implements IsWidget, EntryPoint {
+public class FlightChecklist implements IsWidget, EntryPoint {
  
-  private VerticalPanel vp;
- 
+  
   public Widget asWidget() {
-    if (vp == null) {
-      vp = new VerticalPanel();
-      vp.setSpacing(10);
-      createForm1();
-      createForm2();
-    }
-    return vp;
+	  
+	  FlowPanel container = new FlowPanel();
+	  container.setTitle("Flight Check List");
+	  
+	  FramedPanel panel = new FramedPanel();
+	  panel.setHeadingText("Before-Takeoff Checklist");
+	  panel.setWidth(350);
+	  panel.setBodyStyle("background: none; padding: 5px");
+	  VerticalLayoutContainer p = new VerticalLayoutContainer();
+	  panel.add(p);
+		
+	  CheckBox check1 = new CheckBox();
+	  check1.setBoxLabel("Auxiliary fuel pump — Off:");
+	  p.add(check1);
+		
+		CheckBox check2 = new CheckBox();
+		check1.setBoxLabel("Flight controls — Free and correct:");
+		p.add(check2);
+		
+		CheckBox check3 = new CheckBox();
+		check3.setBoxLabel("Instruments and radios:");
+		p.add(check3);
+		
+		
+		CheckBox check4 = new CheckBox();
+		check4.setBoxLabel("Landing gear position lights :"); 
+		p.add(check4);
+		
+		CheckBox check5 = new CheckBox();
+		check5.setBoxLabel("Altimeter  :");
+		    p.add(check5);
+		    
+		   
+		    CheckBox check6 = new CheckBox();
+		    check6.setBoxLabel("Directional gyro :");
+		p.add(check6);
+		
+		
+		
+		CheckBox check7 = new CheckBox();
+		check7.setBoxLabel ("Fuel gauges :");
+		p.add(check7);
+		
+		
+		
+		CheckBox check8 = new CheckBox();
+		check8.setBoxLabel ("Trim :");
+		p.add(check8);
+		
+		
+		CheckBox check9 = new CheckBox();
+		check9.setBoxLabel(" Propeller — Exercise:");
+		    p.add(check9);
+		   
+		    
+		    CheckBox check10 = new CheckBox();
+		    check10.setBoxLabel(" Engine idle :"); 
+		    p.add(check10);
+		 
+		    
+		    CheckBox check11 = new CheckBox();
+		    check11.setBoxLabel("Magnetos:");
+		p.add(check11);
+		
+		 
+		CheckBox check12 = new CheckBox();
+		check12.setBoxLabel("Flaps:");
+		    p.add(check12);
+		   
+		    
+		    CheckBox check13 = new CheckBox();
+		    check13.setBoxLabel("Seat belts/shoulder harnesses — Fastened:");
+		    p.add(check13);
+		 
+		container.add(panel);    
+		       
+		 //Panel 2 Parking Brake
+		FramedPanel panel2 = new FramedPanel();
+		panel2.setHeadingText("Parking Brake");
+		panel2.setWidth(350);
+		panel2.setBodyStyle("background: none; padding: 5px");
+		VerticalLayoutContainer p2 = new VerticalLayoutContainer();
+		panel2.add(p2);
+		CheckBox check14 = new CheckBox();
+		check14.setBoxLabel("Lights — Landing, taxi, strobes on:");
+		p2.add(check14);
+		
+		
+		CheckBox check15 = new CheckBox();
+		check15.setBoxLabel("Doors and windows — Locked:");
+		p2.add(check15);
+		
+		
+		
+		CheckBox check16 = new CheckBox();
+		check16.setBoxLabel("Mixture — Full rich :");
+		    p2.add(check16);
+		  
+		    
+		    CheckBox check17 = new CheckBox();
+		    check17.setBoxLabel("Lights — Landing :");
+		p2.add(check17);
+		
+		
+		CheckBox check18 = new CheckBox();
+		check18.setBoxLabel("Lights — Landing :");
+		p2.add(check18);
+		
+		CheckBox check19 = new CheckBox();
+		check19.setBoxLabel("Camera — Transponder on :");
+		HorizontalPanel hp = new HorizontalPanel();
+		p2.add(check19);
+		
+		
+		CheckBox check20 = new CheckBox();
+		check20.setBoxLabel("Action — Engine instruments checked");
+		    p2.add(check20);
+		    
+		    container.add(panel2);   
+		    //Panel 3 Before Flight Landing
+		FramedPanel panel3 = new FramedPanel();
+		panel3.setHeadingText("Before Flight Landing");
+		panel3.setWidth(350);
+		panel3.setBodyStyle("background: none; padding: 5px");
+		VerticalLayoutContainer p3 = new VerticalLayoutContainer();
+		panel3.add(p3); 
+		CheckBox check21 = new CheckBox();
+		check21.setBoxLabel("Fuel selector — Fullest tank:");
+		    p3.add(check21);
+		   
+		    
+		    
+		    CheckBox check22 = new CheckBox();
+		    check22.setBoxLabel("Directional gyro — Aligned with magnetic compass:");
+		    p3.add(check22);
+		
+		  
+		    CheckBox check23 = new CheckBox();
+		    check23.setBoxLabel("Seat belts/shoulder harnesses — secure:");
+		p3.add(check23);
+		
+		
+		CheckBox check24 = new CheckBox();
+		check24.setBoxLabel("Mixture — Full rich :");
+		p3.add(check24);
+		
+		
+		CheckBox check25 = new CheckBox();
+		check25.setBoxLabel("Cowl flaps — As requiredh :");   
+		    p3.add(check25);
+		   
+		    
+		    
+		    CheckBox check26 = new CheckBox();
+		    check26.setBoxLabel("Final items:"); 
+		    p3.add(check26);
+		   
+		    
+		    CheckBox check27 = new CheckBox();
+		    check27.setBoxLabel("Landing gear — Down:"); 
+		p3.add(check27);
+		
+		
+		
+		CheckBox check28 = new CheckBox();
+		check28.setBoxLabel( "Propeller — High rpm:");
+		    p3.add(check28);
+		   
+		    
+		    
+		    CheckBox check29 = new CheckBox();
+		    check29.setBoxLabel("Flaps — As required");
+		p3.add(check29);
+		container.add(panel3);
+		
+		return container;
+	  
+	  
   }
- 
-  /*public void onModuleLoad() {
+	  
+	  
+  public void onModuleLoad() {
     RootPanel.get().add(asWidget());
   }
- 
-  private void createForm1() {
-    FramedPanel panel = new FramedPanel();
-    panel.setHeadingText("Simple Form");
-    panel.setWidth(350);
-    panel.setBodyStyle("background: none; padding: 5px");
- 
-    VerticalLayoutContainer p = new VerticalLayoutContainer();
-    panel.add(p);
- 
-    TextField firstName = new TextField();
-    firstName.setAllowBlank(false);
-    firstName.setEmptyText("Enter your name...");
-    firstName.addValueChangeHandler(new ValueChangeHandler<String>() {
-      @Override
-      public void onValueChange(ValueChangeEvent<String> event) {
-        Info.display("Value Changed", "First name changed to " + event.getValue() == null ? "blank" : event.getValue());
-      }
-    });
-    p.add(new FieldLabel(firstName, "Name"), new VerticalLayoutData(1, -1));
- 
-    TextField email = new TextField();
-    email.setAllowBlank(false);
-    p.add(new FieldLabel(email, "Email"), new VerticalLayoutData(1, -1));
-    PasswordField password = new PasswordField();*/
-    p.add(new FieldLabel(FlightChecklist, "Flight Checklist"), new VerticalLayoutData(1, -1));/*
- 
-    //NumberField<Integer> age = new NumberField<Integer>(new IntegerPropertyEditor());
-    age.addParseErrorHandler(new ParseErrorHandler() {
- 
-      @Override
-      public void onParseError(ParseErrorEvent event) {
-        Info.display("Parse Error", event.getErrorValue() + " could not be parsed as a number");
-      
-    });
-    age.setAllowBlank(false);
- 
-    p.add(new FieldLabel(age, "Age"), new VerticalLayoutData(1, -1));
- 
-    StockProperties props = GWT.create(StockProperties.class);
-    ListStore<Stock> store = new ListStore<Stock>(props.key());
-    store.addAll(TestData.getStocks());
- 
-    ComboBox<Stock> combo = new ComboBox<Stock>(store, props.nameLabel());
-    combo.addValueChangeHandler(new ValueChangeHandler<Stock>() {
- 
-      @Override
-      public void onValueChange(ValueChangeEvent<Stock> event) {
-        Info.display("Selected", "You selected " + event.getValue());
-      }
-    });
-    combo.setAllowBlank(true);
-    combo.setForceSelection(true);
-    combo.setTriggerAction(TriggerAction.ALL);
- 
-    p.add(new FieldLabel(combo, "Company"), new VerticalLayoutData(1, -1));
- 
-    DateField date = new DateField();
-    date.addParseErrorHandler(new ParseErrorHandler() {
- 
-      @Override
-      public void onParseError(ParseErrorEvent event) {
-        Info.display("Parse Error", event.getErrorValue() + " could not be parsed as a date");
-      }
-    });
- 
-    date.addValueChangeHandler(new ValueChangeHandler<Date>() {
- 
-      @Override
-      public void onValueChange(ValueChangeEvent<Date> event) {
-        String v = event.getValue() == null ? "nothing"
-            : DateTimeFormat.getFormat(PredefinedFormat.DATE_MEDIUM).format(event.getValue());
-        Info.display("Selected", "You selected " + v);
- 
-      }
-    });
-    date.addValidator(new MinDateValidator(new Date()));
-    p.add(new FieldLabel(date, "Birthday"), new VerticalLayoutData(1, -1));
- 
-    TimeField time = new TimeField();
-    time.addParseErrorHandler(new ParseErrorHandler() {
- 
-      @Override
-      public void onParseError(ParseErrorEvent event) {
-        Info.display("Parse Error", event.getErrorValue() + " could not be parsed as a valid time");
-      }
-    });
- 
-    time.setMinValue(new DateWrapper().clearTime().addHours(8).asDate());
-    time.setMaxValue(new DateWrapper().clearTime().addHours(18).addSeconds(1).asDate());
-    p.add(new FieldLabel(time, "Time"), new VerticalLayoutData(1, -1));
- 
-    Slider slider = new Slider();
-    slider.setMinValue(40);
-    slider.setMaxValue(90);
-    slider.setValue(0);
-    slider.setIncrement(5);
-    slider.setMessage("{0} inches tall");
-    p.add(new FieldLabel(slider, "Size"), new VerticalLayoutData(1, -1));
-     
-    ValueChangeHandler<Boolean> musicHandler = new ValueChangeHandler<Boolean>() {*/
-       
-     // @Override
-      public void onValueChange(ValueChangeEvent<Boolean> event) {
-        CheckBox check = (CheckBox)event.getSource();
-       /* Info.display("Music Changed", check.getBoxLabel() + " " + (event.getValue() ? "selected" : "not selected"));
-      */{
-    };
-	  private void createForm1() {
-	FramedPanel panel = new FramedPanel();
-    panel.setHeadingText("Before-Takeoff Checklist");
-    panel.setWidth(350);
-    panel.setBodyStyle("background: none; padding: 5px");
-    VerticalLayoutContainer p = new VerticalLayoutContainer();
-    panel.add(p);
-    CheckBox check1 = new CheckBox();
-    check1.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check1);
-    p.add(new FieldLabel(hp, "Auxiliary fuel pump — Off:"));
-    
-    CheckBox check2 = new CheckBox();
-    check2.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check2);
-    p.add(new FieldLabel(hp, " Flight controls — Free and correct:"));
- 
-    
-    CheckBox check3 = new CheckBox();
-    check3.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check3);
-    p.add(new FieldLabel(hp, "Instruments and radios:"));
-    
-    
-    CheckBox check4 = new CheckBox();
-    check4.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check4);
-    p.add(new FieldLabel(hp, "Landing gear position lights :")); 
-    
-    
-    CheckBox check5 = new CheckBox();
-    check5.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check5);
-    p.add(new FieldLabel(hp, " Altimeter  :"));
-    
-    
-    CheckBox check6 = new CheckBox();
-    check6.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check6);
-    p.add(new FieldLabel(hp, "Directional gyro :"));
-    
-    
-    CheckBox check7 = new CheckBox();
-    check7.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check7);
-    p.add(new FieldLabel(hp, "Fuel gauges :"));
-    
-    
-    CheckBox check8 = new CheckBox();
-    check8.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check8);
-    p.add(new FieldLabel(hp, " Trim :"));
-    
-    
-    CheckBox check9 = new CheckBox();
-    check9.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check9);
-    p.add(new FieldLabel(hp, " Propeller — Exercise:"));
-    
-    CheckBox check10 = new CheckBox();
-    check10.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check10);
-    p.add(new FieldLabel(hp, " Engine idle :")); 
-    
-    
-    CheckBox check11 = new CheckBox();
-    check11.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check11);
-    p.add(new FieldLabel(hp, "Magnetos:"));
-    
-    
-    CheckBox check12 = new CheckBox();
-    check12.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check12);
-    p.add(new FieldLabel(hp, "Flaps:"));
-    
-    
-    CheckBox check13 = new CheckBox();
-    check13.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check13);
-    p.add(new FieldLabel(hp, "Seat belts/shoulder harnesses — Fastened:"));
-    
-    
- //Panel 2 Parking Brake
-    FramedPanel panel2 = new FramedPanel();
-    panel2.setHeadingText("Parking Brake");
-    panel2.setWidth(350);
-    panel2.setBodyStyle("background: none; padding: 5px");
-    VerticalLayoutContainer p2 = new VerticalLayoutContainer();
-    panel2.add(p2);
-    CheckBox check1 = new CheckBox();
-    check1.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check1);
-    p2.add(new FieldLabel(hp, "Final items:"));
-    
-    
-    CheckBox check2 = new CheckBox();
-    check2.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check2);
-    p2.add(new FieldLabel(hp, "Doors and windows — Locked:"));
-    
-    
-    
-    CheckBox check3 = new CheckBox();
-    check3.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check3);
-    p2.add(new FieldLabel(hp, "Mixture — Full rich :"));
-    
-    
-    CheckBox check4 = new CheckBox();
-    check4.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check4);
-    p2.add(new FieldLabel(hp, "Lights — Landing :"));
-    
-    
-    
-    CheckBox check5 = new CheckBox();
-    check5.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check5);
-    p2.add(new FieldLabel(hp, "Lights — Landing :"));
-    
-    CheckBox check6 = new CheckBox();
-    check6.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check6);
-    p2.add(new FieldLabel(hp, "Camera — Transponder on :"));
-    
-    
-    
-    CheckBox check7 = new CheckBox();
-    chec7.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check7);
-    p2.add(new FieldLabel(hp, "Action — Engine instruments:"));
-    
-    
-    CheckBox check8 = new CheckBox();
-    chec8.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check8);
-    p2.add(new FieldLabel(hp, "Action — Engine instruments:"));
-    
-  
-    
-    //Panel 3 Before Landing
-    FramedPanel panel3 = new FramedPanel();
-    panel3.setHeadingText("Before Landing");
-    panel3.setWidth(350);
-    panel3.setBodyStyle("background: none; padding: 5px");
-    VerticalLayoutContainer p3 = new VerticalLayoutContainer();
-    panel2.add(p3);
-    CheckBox check1 = new CheckBox();
-    check1.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check1);
-    p3.add(new FieldLabel(hp, "Fuel selector — Fullest tank:"));
-    
-    
-    CheckBox check2 = new CheckBox();
-    check2.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check2);
-    p3.add(new FieldLabel(hp, "Directional gyro — Aligned with magnetic compass:"));
-  
-    CheckBox check3 = new CheckBox();
-    check3.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check3);
-    p3.add(new FieldLabel(hp, "Seat belts/shoulder harnesses — secure:"));
-    
-    
-    CheckBox check4 = new CheckBox();
-    check4.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check4);
-    p3.add(new FieldLabel(hp, "Mixture — Full rich :"));
-    
-    
-    CheckBox check5 = new CheckBox();
-    check5.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check5);
-    p3.add(new FieldLabel(hp, "Cowl flaps — As requiredh :"));   
-    
-    
-    CheckBox check6 = new CheckBox();
-    check6.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check6);
-    p3.add(new FieldLabel(hp, "Final items:")); 
-    
-    CheckBox check7 = new CheckBox();
-    check7.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check7);
-    p3.add(new FieldLabel(hp, "Landing gear — Down:")); 
-    
-    
-    CheckBox check8 = new CheckBox();
-    check8.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check8);
-    p3.add(new FieldLabel(hp, "Propeller — High rpm:")); 
-    
-    
-    CheckBox check9 = new CheckBox();
-    check9.setEnabled(true);
-    HorizontalPanel hp = new HorizontalPanel();
-    hp.add(check9);
-    p3.add(new FieldLabel(hp, "Flaps — As required")); 
-    
-    
-    
-   /* Radio radio = new Radio();
-    radio.setBoxLabel("Red");
- 
-    Radio radio2 = new Radio();
-    radio2.setBoxLabel("Blue");
-    radio2.setValue(true);
- 
-    hp = new HorizontalPanel();
-    hp.add(radio);
-    hp.add(radio2);
- 
-    p.add(new FieldLabel(hp, "Color"));
- 
-    // we can set name on radios or use toggle group
-    ToggleGroup toggle = new ToggleGroup();
-    toggle.add(radio);
-    toggle.add(radio2);
-    toggle.addValueChangeHandler(new ValueChangeHandler<HasValue<Boolean>>() {
- 
-      @Override
-      public void onValueChange(ValueChangeEvent<HasValue<Boolean>> event) {
-        ToggleGroup group = (ToggleGroup)event.getSource();
-        Radio radio = (Radio)group.getValue();
-        Info.display("Color Changed", "You selected " + radio.getBoxLabel());
-      }
-    });
- 
-    TextArea description = new TextArea();
-    description.setAllowBlank(false);
-    description.addValidator(new MinLengthValidator(10));
-    p.add(new FieldLabel(description, "Description"), new VerticalLayoutData(1, 100));
- 
-    final SpinnerField<Double> spinnerField = new SpinnerField<Double>(new DoublePropertyEditor());
-    spinnerField.setIncrement(.1d);
-    spinnerField.setMinValue(-10d);
-    spinnerField.setMaxValue(10d);
-    spinnerField.setAllowNegative(true);
-    spinnerField.setAllowBlank(false);
-    spinnerField.getPropertyEditor().setFormat(NumberFormat.getFormat("0.0"));
-    spinnerField.addValueChangeHandler(new ValueChangeHandler<Double>() {
- 
-      @Override
-      public void onValueChange(ValueChangeEvent<Double> event) {
-        Info.display("Duration Changed",
-            "Duration changed to " + event.getValue() == null ? "nothing" : event.getValue() + "");
-      }
-    });
-    spinnerField.addSelectionHandler(new SelectionHandler<Double>() {
- 
-      @Override
-      public void onSelection(SelectionEvent<Double> event) {
-        String msg = "nothing";
-        if (event.getSelectedItem() != null) {
-          msg = spinnerField.getPropertyEditor().render(event.getSelectedItem());
-        }
- 
-        Info.display("Spin Change", "Current value changed to " + msg);
-      }
-    });
- 
-    FieldLabel spinLabel = new FieldLabel(spinnerField, "Duration(s)");
- 
-    p.add(spinLabel, new VerticalLayoutData(1, -1));
- 
-    panel.addButton(new TextButton("Save"));
-    panel.addButton(new TextButton("Cancel"));
- 
-    vp.add(panel);
-  }
- 
-  private void createForm2() {
-    FramedPanel form2 = new FramedPanel();
-    form2.setHeadingText("Simple Form with FieldSets");
-    form2.setWidth(350);
- 
-    FieldSet fieldSet = new FieldSet();
-    fieldSet.setHeadingText("User Information");
-    fieldSet.setCollapsible(true);
-    form2.add(fieldSet);
- 
-    VerticalLayoutContainer p = new VerticalLayoutContainer();
-    fieldSet.add(p);
- 
-    TextField firstName = new TextField();
-    firstName.setAllowBlank(false);
-    p.add(new FieldLabel(firstName, "First Name"), new VerticalLayoutData(1, -1));
- 
-    TextField lastName = new TextField();
-    lastName.setAllowBlank(false);
-    p.add(new FieldLabel(lastName, "Last Name"), new VerticalLayoutData(1, -1));
- 
-    TextField email = new TextField();
-    email.setAllowBlank(false);
-    p.add(new FieldLabel(email, "Email"), new VerticalLayoutData(1, -1));
- 
-    form2.addButton(new TextButton("Save"));
-    form2.addButton(new TextButton("Cancel"));
- 
-    vp.add(form2);
-  }*/
-	  }
+
 }

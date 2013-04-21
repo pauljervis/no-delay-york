@@ -10,7 +10,7 @@ package com.appstore.yorknodelays.client;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.appstore.yorknodelays.server.Flight;
+import com.appstore.yorknodelays.shared.Flight;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.core.client.EntryPoint;
@@ -50,21 +50,7 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 import com.sencha.gxt.widget.core.client.grid.editing.GridInlineEditing;
  
     
-public class Controller implements EntryPoint, IsWidget {
-	
-	interface FlightProperties extends PropertyAccess<Flight> {
-	    ModelKeyProvider<Flight> id();
-	    
-	    @Path("id")
-	    ValueProvider<Flight, String> flightId();
-	     
-	    @Path("destination.id")
-	    ValueProvider<Flight, String> destination();
-	    @Path("departure.id")
-	    ValueProvider<Flight, String> origin();
-	    
-	    ValueProvider<Flight, String> remarks();
-	}
+public class ControllerPage implements EntryPoint, IsWidget {
 	
 	private static final FlightProperties props = GWT.create(FlightProperties.class);
 	
@@ -118,11 +104,11 @@ public class Controller implements EntryPoint, IsWidget {
 	    grid.setWidth(382);
 	    grid.setHeight(200);
 	     
-	    FieldLabel kidsContainer = new FieldLabel();
-	    kidsContainer.setText("Kids");
-	    kidsContainer.setLabelAlign(LabelAlign.TOP);
-	    kidsContainer.setWidget(grid);
-	    container.add(kidsContainer);
+	    FieldLabel flightContainer = new FieldLabel();
+	    flightContainer.setText("Flights");
+	    flightContainer.setLabelAlign(LabelAlign.TOP);
+	    flightContainer.setWidget(grid);
+	    container.add(flightContainer);
 	    
 	  
     FramedPanel panel = new FramedPanel();
