@@ -17,18 +17,18 @@ public class Route {
 	private List<Airspace> airspaceIntersected;
 	private boolean active;
 	
-	public void setName(String name)					{ this.name = name; }
-	public void setId(String id) 						{ this.id = id; }
-	public void setAirline(Airline airline)				{ this.airline = airline; }
-	public void setJourneyDistance(float distance)		{ this.journeyDistance = distance; }
-	public void setJourneyTime(int journeyTime)			{ this.journeyTime = journeyTime; }
-	public void setSourceAirport(Airport airport)		{ this.sourceAirport = airport; }
-	public void setSourceGate(Gate gate)				{ this.sourceGate = gate; }
-	public void setDestinationAirport(Airport airport)	{ this.destinationAirport = airport; }
-	public void setDestinationGate(Gate gate)			{ this.destinationGate = gate; }
-	public void setWeather(Weather weather)				{ this.weather = weather; }
-	public void setAirzoneIntersected(Airspace airspace){ this.airspaceIntersected = airspace; }
-	public void setActive(boolean active)				{ this.active = active; }
+	public void setName(String name)							{ this.name = name; }
+	public void setId(String id) 								{ this.id = id; }
+	public void setAirline(Airline airline)						{ this.airline = airline; }
+	public void setJourneyDistance(float distance)				{ this.journeyDistance = distance; }
+	public void setJourneyTime(int journeyTime)					{ this.journeyTime = journeyTime; }
+	public void setSourceAirport(Airport airport)				{ this.sourceAirport = airport; }
+	public void setSourceGate(Gate gate)						{ this.sourceGate = gate; }
+	public void setDestinationAirport(Airport airport)			{ this.destinationAirport = airport; }
+	public void setDestinationGate(Gate gate)					{ this.destinationGate = gate; }
+	public void setWeather(Weather weather)						{ this.weather = weather; }
+	public void setAirspaceIntersected(List<Airspace> airspace)	{ this.airspaceIntersected = airspace; }
+	public void setActive(boolean active)						{ this.active = active; }
 	
 	public String getName() {
 		return name;
@@ -60,7 +60,7 @@ public class Route {
 	public Weather getWeather() {
 		return weather;
 	}
-	public Airspace getAirspaceIntersected() {
+	public List<Airspace> getAirspaceIntersected() {
 		return airspaceIntersected;
 	}
 	public boolean isActive() {

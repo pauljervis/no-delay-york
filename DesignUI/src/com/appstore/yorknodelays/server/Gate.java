@@ -1,8 +1,12 @@
 package com.appstore.yorknodelays.server;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 public class Gate {
 
-	private int number;
+	private int gateNumber;
 	private String name;
 	private String id;
 	private String airline;
@@ -16,8 +20,46 @@ public class Gate {
 	private boolean inUse;
 	private boolean held;
 	
-	public int getNumber() {
-		return number;
+	public boolean addGateToDatabase(String key) {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Gate", key);
+		e = addGateToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public boolean addGateToDatabase() {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Gate");
+		e = addGateToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public Entity addGateToEntity(Entity e) {
+		
+		e.setProperty("id", this.id);
+		e.setProperty("name", this.name);
+		e.setProperty("number", this.gateNumber);
+		e.setProperty("airline", this.airline);
+		e.setProperty("route", this.route.getId());
+		e.setProperty("scheduledFlight", this.scheduledFlight);
+		e.setProperty("prepTime", this.prepTime);
+		e.setProperty("cleanupTime", this.cleanupTime);
+		e.setProperty("active", this.active);
+		e.setProperty("delay", this.delay);
+		e.setProperty("inUse", this.inUse);
+		e.setProperty("held", this.held);
+		
+		return e;
+	}
+	
+	public int getGateNumber() {
+		return gateNumber;
 	}
 	public String getName() {
 		return name;
@@ -56,7 +98,7 @@ public class Gate {
 		return held;
 	}
 	public void setNumber(int number) {
-		this.number = number;
+		this.gateNumber = number;
 	}
 	public void setName(String name) {
 		this.name = name;

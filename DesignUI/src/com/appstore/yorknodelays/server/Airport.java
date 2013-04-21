@@ -56,7 +56,7 @@ public class Airport {
 	public void setAirline(List<Airline> airline) {
 		this.airline = airline;
 	}
-	public void setRoute(List<Routes> route) {
+	public void setRoute(List<Route> route) {
 		this.route = route;
 	}
 	public void setWeather(Weather weather) {

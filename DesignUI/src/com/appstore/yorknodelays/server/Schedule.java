@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Schedule {
 	
+	private String id;
 	private List<Flight> flights;
 	private List<Airline> airlines;
 	private List<Airport> sourceAirports;
@@ -11,6 +12,13 @@ public class Schedule {
 	private List<Aircraft> aircraft;
 	private List<Boolean> active;
 	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public List<Flight> getFlights() {
 		return flights;
 	}
