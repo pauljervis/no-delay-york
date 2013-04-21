@@ -2,6 +2,10 @@ package com.appstore.yorknodelays.server;
 
 import java.util.Date;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 public class Aircraft {
 	
 	private float fuelCapacity;		// Fuel capacity in Galons
@@ -32,8 +36,11 @@ public class Aircraft {
 	private Date nextService;
 	private int prepTime;			// Time to prepare the plane to fly again, seconds
 	private int flightTime;
-	private float bearing;
+	private Location location;
+	private float bearing;			// Degrees
 	private int departureTime;
+	private int currentSpeed;
+	private int tripTime;
 	
 	
 	public float getFuelCapacity() {
@@ -218,7 +225,98 @@ public class Aircraft {
 	}
 	
 	
+	public Location getLocation() {
+		return location;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+	public int getCurrentSpeed() {
+		return currentSpeed;
+	}
+	public void setCurrentSpeed(int currentSpeed) {
+		this.currentSpeed = currentSpeed;
+	}
+	public int getTripTime() {
+		return tripTime;
+	}
+	public void setTripTime(int tripTime) {
+		this.tripTime = tripTime;
+	}
+public boolean addAircraftToDatabase(String key) {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Aircraft", key);
+		e = addAircraftToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
 	
-
+	public boolean addAircraftToDatabase() {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Aircraft");
+		e = addAircraftToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public Entity addAircraftToEntity(Entity e) {
+		
+		e.setProperty("fuelCapacity", fuelCapacity);
+		e.setProperty("refuelTime", refuleTime);
+		e.setProperty("averageSpeedClimb", averageSpeedClimb);
+		e.setProperty("averageSpeedCruise",averageSpeedCruise);
+		e.setProperty("averageSpeedDescent",averageSpeedDescent);
+		e.setProperty("maxSpeedClimb",maxSpeedClimb);
+		e.setProperty("maxSpeedCruise", maxSpeedCruise);
+		e.setProperty("maxSpeedDescent", maxSpeedDescent);
+		e.setProperty("name", name);
+		e.setProperty("manufacturer", manufacturer);
+		e.setProperty("type", type);
+		e.setProperty("model", model);
+		e.setProperty("engines", engines);
+		e.setProperty("hourlyRunningCost", hourlyRunningCost);
+		e.setProperty("staffCapacity", staffCapacity);
+		e.setProperty("passangerCapacity", passangerCapacity);
+		e.setProperty("averageTakeoffCost", averageTakeoffCost);
+		e.setProperty("range", range);
+		e.setProperty("lenght", lenght);
+		e.setProperty("cargoCapacity", cargoCapacity);
+		e.setProperty("maxAltitude", maxAltitude);
+		e.setProperty("active", active);
+		e.setProperty("commissionDate", commissionDate);
+		e.setProperty("nextService", nextService);
+		e.setProperty("prepTime", prepTime);
+		e.setProperty("flightTime", flightTime);
+		e.setProperty("bearing", bearing);
+		e.setProperty("departureTime", departureTime);
+		
+		return e;
+	}
+	
+	public void stepSimulator(int currentTime, int timeStep) {
+		/*# Can we use some randomness to do the speed variation due to weather/load etc?
+	        # This method only estimates the airplanes predicted position.. I think the
+	        # algorithm needs a position, a speed, and a direction, and the angle between
+	        # the actual direction and the desired direction?
+	        */
+	        
+	        // In order to have 0 degrees at north and move clock-wise, x is the adjacent and y
+	        // is the opposite
+		double newLatitud = Math.sin(this.bearing*Math.PI/180)*this.currentSpeed * timeStep/3600;
+		double newLongitud = Math.cos(this.bearing*Math.PI/180)*this.currentSpeed * timeStep/3600;
+		this.location.setLatitude(newLatitud);
+		this.location.setLongitude(newLongitud);
+		this.tripTime += timeStep;
+	}
+	
+	public void sendStormWarning(int warning) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 }
