@@ -90,10 +90,14 @@ public class FlightPage implements EntryPoint {
 	 
 	    VerticalLayoutContainer p = new VerticalLayoutContainer();
 	    panel.add(p);
-	 
-	    p.add(new FieldLabel(PassengerCapacity, "Passenger Capacity:"), new VerticalLayoutData(1, -1));
-	    p.add(new FieldLabel(BaggageCapacity, "Baggage Capacity:"), new VerticalLayoutData(1, -1));
-	    p.add(new FieldLabel(PassengerCount, "Passenger Count:"), new VerticalLayoutData(1, -1));
+
+	    Label passengerCapacity = new Label("Get passengerCapacity from DB");
+	    Label baggageCapacity = new Label("Get BaggageCapacity from DB");
+	    Label passengerCount = new Label("Get PassengerCount from DB");
+	    
+		p.add(new FieldLabel(passengerCapacity, "Passenger Capacity:"), new VerticalLayoutData(1, -1));
+	    p.add(new FieldLabel(baggageCapacity, "Baggage Capacity:"), new VerticalLayoutData(1, -1));
+	    p.add(new FieldLabel(passengerCount, "Passenger Count:"), new VerticalLayoutData(1, -1));
 	    
 	//Meteorology Panel
 	    FramedPanel panel2 = new FramedPanel();
@@ -103,14 +107,22 @@ public class FlightPage implements EntryPoint {
 	 
 	    VerticalLayoutContainer p2 = new VerticalLayoutContainer();
 	    panel2.add(p2);
-	 
-	    p2.add(new FieldLabel(CurrentWeather, "Current Weather:"), new VerticalLayoutData(1, -1));
-	    p2.add(new FieldLabel(DestinationWeather, "Destination Weather:"), new VerticalLayoutData(1, -1));
-	    p2.add(new FieldLabel(Athmosphere, "Athmosphere:"), new VerticalLayoutData(1, -1));
-	    p2.add(new FieldLabel(Density, "Density:"), new VerticalLayoutData(1, -1));
-	    p2.add(new FieldLabel(HeatWave, "Heat Wave:"), new VerticalLayoutData(1, -1));
-	    p2.add(new FieldLabel(ColdWave, "Cold Wave:"), new VerticalLayoutData(1, -1));
-	    p2.add(new FieldLabel(WindSpeed, "WindSpeed:"), new VerticalLayoutData(1, -1));
+
+	    Label currentWeather = new Label("Get CurrentWeather from DB");
+	    Label destinationWeather = new Label("Get DestinationWeather from DB");
+	    Label athmosphere = new Label("Get Athmosphere from DB");
+	    Label density = new Label("Get Density from DB");
+	    Label heatWave = new Label("Get HeatWave from DB");
+	    Label coldWave = new Label("Get ColdWave from DB");
+	    Label windSpeed = new Label("Get WindSpeed from DB");
+	    
+	    p2.add(new FieldLabel(currentWeather, "Current Weather:"), new VerticalLayoutData(1, -1));
+	    p2.add(new FieldLabel(destinationWeather, "Destination Weather:"), new VerticalLayoutData(1, -1));
+	    p2.add(new FieldLabel(athmosphere, "Athmosphere:"), new VerticalLayoutData(1, -1));
+	    p2.add(new FieldLabel(density, "Density:"), new VerticalLayoutData(1, -1));
+	    p2.add(new FieldLabel(heatWave, "Heat Wave:"), new VerticalLayoutData(1, -1));
+	    p2.add(new FieldLabel(coldWave, "Cold Wave:"), new VerticalLayoutData(1, -1));
+	    p2.add(new FieldLabel(windSpeed, "WindSpeed:"), new VerticalLayoutData(1, -1));
 	    
 	  //Aircraft Panel
 	    FramedPanel panel3 = new FramedPanel();
@@ -120,13 +132,21 @@ public class FlightPage implements EntryPoint {
 	 
 	    VerticalLayoutContainer p3 = new VerticalLayoutContainer();
 	    panel3.add(p3);
+	    
+	    Label aircraftModel = new Label("Get aircraftModel from DB");
+	    Label aircraftCompany = new Label("Get AircraftCompany from DB");
+	    Label fuelConsumption = new Label("Get FuelConsumption from DB");
+	    Label manufacturedDate = new Label("Get ManufacturedDate from DB");
+	    Label capacity = new Label("Get Capacity from DB");
+	    Label destination = new Label("Get Destination from DB");
+	    Label origin = new Label("Get origin from DB");
 	 
-	    p3.add(new FieldLabel(AircraftModel, "Aircraft Model:"), new VerticalLayoutData(1, -1));
-	    p3.add(new FieldLabel(AircraftCompany, "Aircraft Company:"), new VerticalLayoutData(1, -1));
-	    p3.add(new FieldLabel(FuelConsumption, "Fuel Consumption:"), new VerticalLayoutData(1, -1));
-	    p3.add(new FieldLabel(ManufacturedDate:, "Manufacture Date:"), new VerticalLayoutData(1, -1));
-	    p3.add(new FieldLabel(Capacity, "Capacity:"), new VerticalLayoutData(1, -1));
-	    p3.add(new FieldLabel(Destination, "Destination:"), new VerticalLayoutData(1, -1));
+	    p3.add(new FieldLabel(aircraftModel, "Aircraft Model:"), new VerticalLayoutData(1, -1));
+	    p3.add(new FieldLabel(aircraftCompany, "Aircraft Company:"), new VerticalLayoutData(1, -1));
+	    p3.add(new FieldLabel(fuelConsumption, "Fuel Consumption:"), new VerticalLayoutData(1, -1));
+	    p3.add(new FieldLabel(manufacturedDate, "Manufacture Date:"), new VerticalLayoutData(1, -1));
+	    p3.add(new FieldLabel(capacity, "Capacity:"), new VerticalLayoutData(1, -1));
+	    p3.add(new FieldLabel(destination, "Destination:"), new VerticalLayoutData(1, -1));
 	    p3.add(new FieldLabel(origin, "Origin:"), new VerticalLayoutData(1, -1));
 {
 	 

@@ -56,8 +56,6 @@ public class Weather {
 	        put(113, "Clear/Sunny");
 	    }
 	};
-
-
 	private float windDirection;
 	private float windSpeed; // Wind Speed knots
 	private float temperature; // Tempurature Celsius

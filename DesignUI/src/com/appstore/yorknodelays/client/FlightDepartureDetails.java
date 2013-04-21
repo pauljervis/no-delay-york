@@ -11,6 +11,7 @@ package com.sencha.gxt.explorer.client.grid;
 import java.util.ArrayList;
 import java.util.List;
  
+import com.appstore.yorknodelays.client.DispatcherPage.RecordResult;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.editor.client.Editor.Path;
@@ -26,6 +27,7 @@ import com.sencha.gxt.data.shared.ListStore;
 import com.sencha.gxt.data.shared.ModelKeyProvider;
 import com.sencha.gxt.data.shared.PropertyAccess;
 import com.sencha.gxt.data.shared.loader.ListLoadResultBean;
+import com.sencha.gxt.data.shared.loader.DataReader;
 //import com.sencha.gxt.data.shared.loader.JsonReader;
 import com.sencha.gxt.data.shared.loader.ListLoadConfig;
 import com.sencha.gxt.data.shared.loader.ListLoadResult;
@@ -44,31 +46,31 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 public class Departures implements IsWidget, EntryPoint {
  
  
-  public interface FlightAutoBeanFactory extends AutoBeanFactory {
+	public interface FlightAutoBeanFactory extends AutoBeanFactory {
+		
+		// AutoBean<RecordResult> items();
  
-   // AutoBean<RecordResult> items();
+		AutoBean<ListLoadConfig> loadConfig();
+	}
  
-    AutoBean<ListLoadConfig> loadConfig();
-  }
+	public interface Departures {
+		String getTime();
+
+		String getFligtName();
  
-  public interface Departures {
-    String getTime();
+		String getOrigin();
  
-    String getFligtName();
+		String getDestination();
  
-    String getOrigin();
+		String getRemarks();
+	}
  
-    String getDestination();
- 
-    String getRemarks();
-  }
- 
-  /**
-   * Defines the structure of the root JSON object being returned by the server.
-   * This class is needed as we cannot return a list of objects. Instead, we
-   * return a single object with a single property that contains the data
-   * records.
-   */
+	/**
+ 	 * Defines the structure of the root JSON object being returned by the server.
+ 	 * This class is needed as we cannot return a list of objects. Instead, we
+ 	 * return a single object with a single property that contains the data
+ 	 * records.
+ 	 */
   /*public interface RecordResult {
  
     List<Flight> getRecords();
@@ -109,7 +111,7 @@ public class Departures implements IsWidget, EntryPoint {
   public Widget asWidget() {
     FlightAutoBeanFactory factory = GWT.create(FlightAutoBeanFactory.class);
  
-//    DataRecordReader reader = new DataRecordJsonReader(factory, RecordResult.class);
+    DataReader reader = new DataRecordJsonReader(factory, RecordResult.class);
  
     String path = "data/data.json";
     RequestBuilder builder = new RequestBuilder(RequestBuilder.GET, path);
