@@ -50,11 +50,25 @@ public class AirTrafficSimulation {
 		aircrafts.add(newAircraft);
 	}
 	
+	public void startSimulator() {
+		
+		// TODO add an event so simulation can be set to false!
+		boolean simulating = true;
+		int currentTime = 0;			// Seconds
+		while (simulating) {
+			stepSimulator(currentTime, 15);
+		}
+	}
+	
 	/*
 	 * Step the simulator
 	 */
     void stepSimulator(int currentTime, int timeStep) {
-        // 1. Ask all the planes to move form "timeStep" seconds
+    	// 1. Ask all airports to dispatch scheduled aircrafts
+    	for (Airport a : airports) {
+    		a.stepSimulator(currentTime, timeStep);
+    	}
+        // 2. Ask all the planes to move form "timeStep" seconds
     	for (Airspace a : airspaces) {
     		a.stepSimulator(currentTime, timeStep);
     	}
