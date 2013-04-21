@@ -16,6 +16,7 @@ public class Aircraft {
 	private int maxSpeedClimb;
 	private int maxSpeedCruise;
 	private int maxSpeedDescent;
+	private int taxiSpeed;
 	private String name;			// AX-809
 	private String manufacturer;
 	private String type;
@@ -41,8 +42,18 @@ public class Aircraft {
 	private int departureTime;
 	private int currentSpeed;
 	private int tripTime;
+	private boolean conflict;
+	private aircaftState state;
+	
+	public static enum aircaftState {atGate, taxi, takeOff, airborne, landing};
 	
 	
+	public aircaftState getState() {
+		return state;
+	}
+	public void setState(aircaftState state) {
+		this.state = state;
+	}
 	public float getFuelCapacity() {
 		return fuelCapacity;
 	}
@@ -243,7 +254,17 @@ public class Aircraft {
 	public void setTripTime(int tripTime) {
 		this.tripTime = tripTime;
 	}
-public boolean addAircraftToDatabase(String key) {
+	
+	public int getTaxiSpeed() {
+		return taxiSpeed;
+	}
+	public void setTaxiSpeed(int taxiSpeed) {
+		this.taxiSpeed = taxiSpeed;
+	}
+	public boolean isConflict() {
+		return conflict;
+	}
+	public boolean addAircraftToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
 		Entity e = new Entity("Aircraft", key);
@@ -313,9 +334,17 @@ public boolean addAircraftToDatabase(String key) {
 		this.tripTime += timeStep;
 	}
 	
-	public void sendStormWarning(int warning) {
+	public void setStormWarning(int warning) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setConflict(boolean conflict) {
+		this.conflict = conflict;
+	}
+	
+	public boolean hasConflict() {
+		return this.conflict;
 	}
 	
 	

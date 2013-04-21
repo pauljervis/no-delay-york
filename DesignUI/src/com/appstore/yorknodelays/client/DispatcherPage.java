@@ -99,11 +99,10 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class DispatcherPage implements EntryPoint, IsWidget {
-	
+public class DispatcherPage implements EntryPoint {
 	private VerticalPanel vp; {
 	 
-	  public Widget asWidget() {
+	//  public Widget asWidget() {
 	    if (vp == null) {
 	      vp = new VerticalPanel();
 	      vp.setSpacing(10);
@@ -219,11 +218,11 @@ public class DispatcherPage implements EntryPoint, IsWidget {
 	    	   
 	    	  @Override
 	    	  public void onModuleLoad() {
-	    		  RootPanel.get().add(asWidget());
-	    	  }
+	    	    RootPanel.get().add(asWidget());
+	    	  
 	    	 
-	    	  @Override
-	    	  public Widget asWidget() {
+	    	  //@Override
+	    	  /*public Widget asWidget() {
 	    	    DestinationAutoBeanFactory factory = GWT.create(DestinationAutoBeanFactory.class);
 	    	 
 	    	    DataRecordJsonReader reader = new DataRecordJsonReader(factory, RecordResult.class);
@@ -234,7 +233,7 @@ public class DispatcherPage implements EntryPoint, IsWidget {
 	    	 
 	    	   final ListLoader<ListLoadConfig, ListLoadResult<Destination>> loader = new ListLoader<ListLoadConfig, ListLoadResult<Destination>>(
 	    	        proxy, reader);
-	    	    loader.useLoadConfig(factory.create(ListLoadConfig.class).as());
+	    	    //loader.useLoadConfig(factory.create(ListLoadConfig.class).as());
 	    	     
 	    	    DestinationProperties props = GWT.create(DestinationProperties.class);
 	    	     
@@ -271,30 +270,29 @@ public class DispatcherPage implements EntryPoint, IsWidget {
 	    	    cp.addStyleName("margin-10");
 	    	    cp.setButtonAlign(BoxLayoutPack.CENTER);
 	    	    cp.addButton(new TextButton("Load Json", new SelectHandler() {
-	    	    	
-	    	    	@Override
-	    	    	public void onSelect(SelectEvent event) {
-	    	    		loader.load();
-	    	    	}
+	    	       
+	    	      @Override
+	    	      public void onSelect(SelectEvent event) {
+	    	        loader.load();
+	    	      }
 	    	    }));
 	    	     
 	    	    return cp;
-	    	    
-	    	 }
-	}
+	    	  }
+	    	 
+	    	{
 	    
-	    NumberField<Integer> age = new NumberField<Integer>(new IntegerPropertyEditor());
+	   /* NumberField<Integer> age = new NumberField<Integer>(new IntegerPropertyEditor());
 	    age.addParseErrorHandler(new ParseErrorHandler() {
-	
-	    @Override
-	    public void onParseError(ParseErrorEvent event) {
-	    	Info.display("Parse Error", event.getErrorValue() + " could not be parsed as a number");
-	    }
-	    }
+	 
+	      @Override
+	      public void onParseError(ParseErrorEvent event) {
+	        Info.display("Parse Error", event.getErrorValue() + " could not be parsed as a number");
+	      }
 	    });
 	    age.setAllowBlank(false);
 	 
-		p.add(new FieldLabel(age, "Age"), new VerticalLayoutData(1, -1));*/
+	  /*  p.add(new FieldLabel(age, "Age"), new VerticalLayoutData(1, -1));*/
 	 /*
 	    StockProperties props = GWT.create(StockProperties.class);
 	    ListStore<Stock> store = new ListStore<Stock>(props.key());
@@ -487,7 +485,6 @@ public class DispatcherPage implements EntryPoint, IsWidget {
 	    form2.addButton(new TextButton("Pilot"));
 	    form2.addButton(new TextButton("Dispatcher"));
 	    form2.addButton(new TextButton("Controller"));
-	    vp.add(form2);*/
-	  }
-}
-
+	    vp.add(form2);
+	  }*/
+}}
