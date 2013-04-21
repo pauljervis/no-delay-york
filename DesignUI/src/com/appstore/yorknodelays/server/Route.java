@@ -2,6 +2,10 @@ package com.appstore.yorknodelays.server;
 
 import java.util.List;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 public class Route {
 
 	private String name;
@@ -16,6 +20,43 @@ public class Route {
 	private Weather weather;
 	private List<Airspace> airspaceIntersected;
 	private boolean active;
+	
+	public boolean addRouteToDatabase(String key) {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Route", key);
+		e = addRouteToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public boolean addRouteToDatabase() {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Route");
+		e = addRouteToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public Entity addRouteToEntity(Entity e) {
+		
+		e.setProperty("id", id);
+		e.setProperty("airline", airline);
+		e.setProperty("journeyDistance", journeyDistance);		// Journey distance in miles
+		e.setProperty("journeyTime", journeyTime);
+		e.setProperty("sourceAirport", sourceAirport);
+		e.setProperty("sourceGate", sourceGate);
+		e.setProperty("destinationAirport", destinationAirport);
+		e.setProperty("destinationGate", destinationGate);
+		e.setProperty("weather", weather);
+		e.setProperty("airspaceIntersected", airspaceIntersected);
+		e.setProperty("active", active);
+		
+		return e;
+	}
 	
 	public void setName(String name)							{ this.name = name; }
 	public void setId(String id) 								{ this.id = id; }
