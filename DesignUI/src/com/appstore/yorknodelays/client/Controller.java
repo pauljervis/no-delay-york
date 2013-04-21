@@ -24,6 +24,8 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.core.client.util.DateWrapper;
+import com.sencha.gxt.data.client.editor.ListStoreEditor;
+import com.sencha.gxt.data.shared.ListStore;
 /*import com.sencha.gxt.examples.resources.client.model.Kid;
 import com.sencha.gxt.examples.resources.client.model.Person;
 import com.sencha.gxt.explorer.client.model.Example.Detail;*/

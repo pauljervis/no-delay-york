@@ -243,7 +243,9 @@ public class Aircraft {
 	public void setTripTime(int tripTime) {
 		this.tripTime = tripTime;
 	}
-public boolean addAircraftToDatabase(String key) {
+	
+	
+	public boolean addAircraftToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
 		Entity e = new Entity("Aircraft", key);

@@ -100,7 +100,8 @@ import com.sencha.gxt.widget.core.client.grid.Grid;
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class DispatcherPage implements EntryPoint {
-	private VerticalPanel vp; {
+	
+	private VerticalPanel vp {
 	 
 	//  public Widget asWidget() {
 	    if (vp == null) {
