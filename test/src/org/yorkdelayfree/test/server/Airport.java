@@ -7,7 +7,7 @@ public class Airport {
 //	private List<Gate> gate;
 //	private List<Airline> airline;
 	
-	private String words;
+	public String words;
 	private int number;
 	
 	public Airport(String words, int number) {

@@ -2,10 +2,128 @@ package com.appstore.yorknodelays.server;
 
 import java.util.List;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+
 public class Airport {
 	
 	private List<Gate> gate;
 	private List<Airline> airline;
+	private List<Route> route;
+	private Weather weather;
+	private Location location;
+	private List<Runway> runway;
+	private String id;
+	private String name;
+	private String threeCode;		// Three character Airport Identifier
+	private String fourCode;		// Four character Airport Identifier
+	private boolean active;
+	
+	
+	public boolean addAirportToDatabase(String key) {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Airport", key);
+		e = addAirportToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public boolean addAirportToDatabase() {
+		
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity e = new Entity("Airport");
+		e = addAirportToEntity(e);
+		ds.put(e);
+		
+		return true;
+	}
+	
+	public Entity addAirportToEntity(Entity e) {
+		
+		e.setProperty("id", id);
+		e.setProperty("weather", weather);
+		//TODO: Implement Location.toString() method
+		e.setProperty("location", location.toString());
+		e.setProperty("name", name);
+		e.setProperty("threeCode", threeCode);
+		e.setProperty("fourCode", fourCode);
+		e.setProperty("active", active);
+		
+		return e;
+	}
+	
+	
+	
+	public List<Gate> getGate() {
+		return gate;
+	}
+	public List<Airline> getAirline() {
+		return airline;
+	}
+	public List<Route> getRoute() {
+		return route;
+	}
+	public Weather getWeather() {
+		return weather;
+	}
+	public Location getLocation() {
+		return location;
+	}
+	public List<Runway> getRunway() {
+		return runway;
+	}
+	public String getId() {
+		return id;
+	}
+	public String getName() {
+		return name;
+	}
+	public String getThreeCode() {
+		return threeCode;
+	}
+	public String getFourCode() {
+		return fourCode;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	public void setGate(List<Gate> gate) {
+		this.gate = gate;
+	}
+	public void setAirline(List<Airline> airline) {
+		this.airline = airline;
+	}
+	public void setRoute(List<Route> route) {
+		this.route = route;
+	}
+	public void setWeather(Weather weather) {
+		this.weather = weather;
+	}
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+	public void setRunway(List<Runway> runway) {
+		this.runway = runway;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public void setThreeCode(String threeCode) {
+		this.threeCode = threeCode;
+	}
+	public void setFourCode(String fourCode) {
+		this.fourCode = fourCode;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
 	
 
 }
