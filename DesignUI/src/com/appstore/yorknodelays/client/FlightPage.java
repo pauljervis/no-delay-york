@@ -90,11 +90,26 @@ public class FlightPage implements EntryPoint {
 	 
 	    VerticalLayoutContainer p = new VerticalLayoutContainer();
 	    panel.add(p);
-	 /*
+	 
+	//PassengerCapacity
+	    TextField PassengerCapacity = new TextField();
+	    PassengerCapacity.setAllowBlank(false);
+	    PassengerCapacity.setEmptyText("");
+	    p.add(PassengerCapacity);
+    //BaggageCapacity
+	    TextField BaggageCapacity = new TextField();
+	    BaggageCapacity.setAllowBlank(false);
+	    BaggageCapacity.setEmptyText("");
+	    p.add(BaggageCapacity);
+    //BaggageCapacity
+	    TextField PassengerCount = new TextField();
+	    PassengerCount.setAllowBlank(false);
+	    PassengerCount.setEmptyText("");
+	    p.add(PassengerCount);
 	    p.add(new FieldLabel(PassengerCapacity, "Passenger Capacity:"), new VerticalLayoutData(1, -1));
 	    p.add(new FieldLabel(BaggageCapacity, "Baggage Capacity:"), new VerticalLayoutData(1, -1));
 	    p.add(new FieldLabel(PassengerCount, "Passenger Count:"), new VerticalLayoutData(1, -1));
-	   */ 
+	   
 	//Meteorology Panel
 	    FramedPanel panel2 = new FramedPanel();
 	    panel2.setHeadingText("Meteorology");
@@ -103,15 +118,58 @@ public class FlightPage implements EntryPoint {
 	 
 	    VerticalLayoutContainer p2 = new VerticalLayoutContainer();
 	    panel2.add(p2);
-	 /*
+	 
+	 //CurrentWeather
+	    TextField CurrentWeather = new TextField();
+	    CurrentWeather.setAllowBlank(false);
+	    CurrentWeather.setEmptyText(""); 
+	    p2.add(CurrentWeather);
+	    
+	//DestinationWeather
+	    TextField DestinationWeather = new TextField();
+	    DestinationWeather.setAllowBlank(false);
+	    DestinationWeather.setEmptyText("");
+	    p2.add(DestinationWeather);
+	    
+    //Atmosphere
+	    TextField Atmosphere = new TextField();
+	    Atmosphere.setAllowBlank(false);
+	    Atmosphere.setEmptyText("");
+	    p2.add(Atmosphere);
+	    
+    //Density
+	    TextField Density = new TextField();
+	    Density.setAllowBlank(false);
+	    Density.setEmptyText("");
+	    p2.add(Density);
+	    
+    //HeatWave
+	    TextField HeatWave = new TextField();
+	    HeatWave.setAllowBlank(false);
+	    HeatWave.setEmptyText("");
+	    p2.add(HeatWave);
+	    
+	    
+    //ColdWave
+	    TextField ColdWave = new TextField();
+	    ColdWave.setAllowBlank(false);
+	    ColdWave.setEmptyText("");
+	    p2.add(ColdWave);
+	    
+    //WindSpeed
+	    TextField WindSpeed= new TextField();
+	    WindSpeed.setAllowBlank(false);
+	    WindSpeed.setEmptyText("");
+	    p2.add( WindSpeed);
+	    
 	    p2.add(new FieldLabel(CurrentWeather, "Current Weather:"), new VerticalLayoutData(1, -1));
 	    p2.add(new FieldLabel(DestinationWeather, "Destination Weather:"), new VerticalLayoutData(1, -1));
-	    p2.add(new FieldLabel(Athmosphere, "Athmosphere:"), new VerticalLayoutData(1, -1));
+	    p2.add(new FieldLabel(Atmosphere, "Atmosphere:"), new VerticalLayoutData(1, -1));
 	    p2.add(new FieldLabel(Density, "Density:"), new VerticalLayoutData(1, -1));
 	    p2.add(new FieldLabel(HeatWave, "Heat Wave:"), new VerticalLayoutData(1, -1));
 	    p2.add(new FieldLabel(ColdWave, "Cold Wave:"), new VerticalLayoutData(1, -1));
 	    p2.add(new FieldLabel(WindSpeed, "WindSpeed:"), new VerticalLayoutData(1, -1));
-	   */ 
+	   
 	  //Aircraft Panel
 	    FramedPanel panel3 = new FramedPanel();
 	    panel3.setHeadingText("Aircraft");
@@ -120,15 +178,57 @@ public class FlightPage implements EntryPoint {
 	 
 	    VerticalLayoutContainer p3 = new VerticalLayoutContainer();
 	    panel3.add(p3);
-	 /*
+	 
+	  //AircraftModel
+	    TextField AircraftModel= new TextField();
+	    AircraftModel.setAllowBlank(false);
+	    AircraftModel.setEmptyText("");
+	    p3.add(AircraftModel);
+	    
+	 //AircraftCompany
+	    TextField AircraftCompany= new TextField();
+	    AircraftCompany.setAllowBlank(false);
+	    AircraftCompany.setEmptyText("");
+	    p3.add(AircraftCompany);
+	    
+	  //FuelConsumption
+	    TextField FuelConsumption= new TextField();
+	    FuelConsumption.setAllowBlank(false);
+	    FuelConsumption.setEmptyText("");
+	    p3.add(FuelConsumption);
+	    
+	  //ManufacturedDate
+	    TextField ManufacturedDate= new TextField();
+	    ManufacturedDate.setAllowBlank(false);
+	    ManufacturedDate.setEmptyText("");
+	    p3.add(ManufacturedDate);
+	    
+	   //Capacity
+	    TextField Capacity= new TextField();
+	    Capacity.setAllowBlank(false);
+	    Capacity.setEmptyText("");
+	    p3.add(Capacity);
+	    
+	   //Destination
+	    TextField Destination= new TextField();
+	    Destination.setAllowBlank(false);
+	    Destination.setEmptyText("");
+	    p3.add(Destination);
+	    
+	   //Origin
+	    TextField Origin= new TextField();
+	    Origin.setAllowBlank(false);
+	    Origin.setEmptyText("");
+	    p3.add(Origin);
+	    
 	    p3.add(new FieldLabel(AircraftModel, "Aircraft Model:"), new VerticalLayoutData(1, -1));
 	    p3.add(new FieldLabel(AircraftCompany, "Aircraft Company:"), new VerticalLayoutData(1, -1));
 	    p3.add(new FieldLabel(FuelConsumption, "Fuel Consumption:"), new VerticalLayoutData(1, -1));
-	    p3.add(new FieldLabel(ManufacturedDate:, "Manufacture Date:"), new VerticalLayoutData(1, -1));
+	    p3.add(new FieldLabel(ManufacturedDate, "Manufacture Date:"), new VerticalLayoutData(1, -1));
 	    p3.add(new FieldLabel(Capacity, "Capacity:"), new VerticalLayoutData(1, -1));
 	    p3.add(new FieldLabel(Destination, "Destination:"), new VerticalLayoutData(1, -1));
-	    p3.add(new FieldLabel(origin, "Origin:"), new VerticalLayoutData(1, -1));
-	    */	 
+	    p3.add(new FieldLabel(Origin, "Origin:"), new VerticalLayoutData(1, -1));
+	    
 	    
 	  }
 }
