@@ -18,6 +18,9 @@ public class Runway {
 	private boolean held;
 	private int cleanTime;
 	private List<Airline> airline;
+	private Aircraft aircraft;
+	private int taxiDistance;
+	private int taxiTime;
 	
 	public boolean addRunwayToDatabase(String key) {
 		
@@ -108,6 +111,17 @@ public class Runway {
 	}
 	public void setAirline(List<Airline> airline) {
 		this.airline = airline;
+	}
+
+	public void addPlane(Aircraft aircraft, int taxiTime) {
+		// TODO Auto-generated method stub
+		this.aircraft = aircraft;
+		this.taxiTime = taxiTime;
+	}
+
+	public int getTaxiDistance() {
+		// TODO Auto-generated method stub
+		return this.taxiDistance;
 	}
 	
 }
