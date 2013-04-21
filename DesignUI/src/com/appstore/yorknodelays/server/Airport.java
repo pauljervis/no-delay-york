@@ -23,7 +23,7 @@ public class Airport {
 	private Airspace airspace;
 	private Runway freeRunway;
 	
-	
+	/*
 	public boolean addAirportToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -56,7 +56,7 @@ public class Airport {
 		e.setProperty("active", active);
 		
 		return e;
-	}
+	}*/
 	
 	
 	

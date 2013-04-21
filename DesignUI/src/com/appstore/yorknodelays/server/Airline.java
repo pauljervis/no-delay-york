@@ -2,10 +2,6 @@ package com.appstore.yorknodelays.server;
 
 import java.util.List;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-
 public class Airline {
 	
 	private String name;
@@ -20,7 +16,7 @@ public class Airline {
 	private List<Route> routes;
 	private List<Schedule> schedules;
 	
-	
+	/*
 	public boolean addAirlineToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -53,6 +49,7 @@ public class Airline {
 		
 		return e;
 	}
+	*/
 	
 	
 	public String getName() {

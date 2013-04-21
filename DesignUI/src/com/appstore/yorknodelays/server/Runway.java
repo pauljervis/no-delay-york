@@ -2,10 +2,6 @@ package com.appstore.yorknodelays.server;
 
 import java.util.List;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-
 public class Runway {
 	
 	private String id;
@@ -22,6 +18,7 @@ public class Runway {
 	private int taxiDistance;
 	private int taxiTime;
 	
+	/*
 	public boolean addRunwayToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -57,6 +54,7 @@ public class Runway {
 		
 		return e;
 	}
+	*/
 
 	public Airport getAirport() {
 		return airport;

@@ -1,8 +1,5 @@
 package com.appstore.yorknodelays.server;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
 
 public class Gate {
 
@@ -20,6 +17,7 @@ public class Gate {
 	private boolean inUse;
 	private boolean held;
 	
+	/*
 	public boolean addGateToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -57,6 +55,7 @@ public class Gate {
 		
 		return e;
 	}
+	*/
 	
 	public int getGateNumber() {
 		return gateNumber;

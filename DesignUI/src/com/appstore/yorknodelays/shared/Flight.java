@@ -2,10 +2,6 @@ package com.appstore.yorknodelays.shared;
 
 import java.util.Date;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-
 public class Flight {
 
 	private String id;
@@ -18,41 +14,6 @@ public class Flight {
 	private Aircraft aircraft;
 	private String remark;
 	private boolean onRoute;
-	
-	public boolean addFlightToDatabase(String key) {
-		
-		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-		Entity e = new Entity("Flight", key);
-		e = addFlightToEntity(e);
-		ds.put(e);
-		
-		return true;
-	}
-	
-	public boolean addFlightToDatabase() {
-		
-		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-		Entity e = new Entity("Flight");
-		e = addFlightToEntity(e);
-		ds.put(e);
-		
-		return true;
-	}
-	
-	public Entity addFlightToEntity(Entity e) {
-		
-		e.setProperty("id", id);
-		e.setProperty("departure", departure);
-		e.setProperty("destination", destination);
-		e.setProperty("departuredate", departuredate);
-		e.setProperty("etaDate", etaDate);
-		e.setProperty("flightDuration", flightDuration);
-		e.setProperty("airline", airline);
-		e.setProperty("aircraft", aircraft);
-		e.setProperty("remark", remark);
-		
-		return e;
-	}
 	
 	public String getId() {
 		return id;

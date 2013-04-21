@@ -2,10 +2,6 @@ package com.appstore.yorknodelays.shared;
 
 import java.util.Date;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-
 public class Aircraft {
 	
 	private float fuelCapacity;		// Fuel capacity in Galons
@@ -264,6 +260,7 @@ public class Aircraft {
 	public boolean isConflict() {
 		return conflict;
 	}
+	/*
 	public boolean addAircraftToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -317,6 +314,7 @@ public class Aircraft {
 		
 		return e;
 	}
+	*/
 	
 	public void stepSimulator(int currentTime, int timeStep) {
 		/*# Can we use some randomness to do the speed variation due to weather/load etc?

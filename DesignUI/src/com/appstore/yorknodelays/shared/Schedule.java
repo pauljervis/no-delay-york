@@ -2,10 +2,6 @@ package com.appstore.yorknodelays.shared;
 
 import java.util.List;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-
 public class Schedule {
 	
 	private String id;
@@ -16,6 +12,8 @@ public class Schedule {
 	private List<Aircraft> aircraft;
 	private List<Boolean> active;
 	
+	
+	/*
 	public boolean addScheduleToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -48,6 +46,7 @@ public class Schedule {
 		
 		return e;
 	}
+	*/
 	
 	public String getId() {
 		return id;

@@ -2,10 +2,6 @@ package com.appstore.yorknodelays.shared;
 
 import java.util.List;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-
 public class Airspace {
 	
 	private int id;
@@ -19,6 +15,7 @@ public class Airspace {
 	private WeatherOracle weatherOrcale;
 	private Controller controller;
 	
+	/*
 	public boolean addAirspaceToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -48,6 +45,7 @@ public class Airspace {
 		
 		return e;
 	}
+	*/
 	
 	public Weather getWeather() {
 		return weather;

@@ -2,10 +2,6 @@ package com.appstore.yorknodelays.server;
 
 import java.util.List;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
-
 public class Route {
 
 	private String name;
@@ -21,6 +17,7 @@ public class Route {
 	private List<Airspace> airspaceIntersected;
 	private boolean active;
 	
+	/*
 	public boolean addRouteToDatabase(String key) {
 		
 		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
@@ -57,6 +54,7 @@ public class Route {
 		
 		return e;
 	}
+	*/
 	
 	public void setName(String name)							{ this.name = name; }
 	public void setId(String id) 								{ this.id = id; }
