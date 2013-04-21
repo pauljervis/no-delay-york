@@ -17,6 +17,7 @@ public class Flight {
 	private Airline airline;
 	private Aircraft aircraft;
 	private String remark;
+	private boolean onRoute;
 	
 	public boolean addFlightToDatabase(String key) {
 		
@@ -107,6 +108,16 @@ public class Flight {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	public boolean getOnRoute() {
+		return this.onRoute;
+	}
+
+	public void setOnRoute(boolean onRoute) {
+		this.onRoute = onRoute;
+	}
+	
+	
 	
 	
 }

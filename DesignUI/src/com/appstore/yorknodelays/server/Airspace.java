@@ -17,6 +17,7 @@ public class Airspace {
 	private List<Airport> airports;
 	private List<Airspace> neighbours;
 	private WeatherOracle weatherOrcale;
+	private Controller controller;
 	
 	public boolean addAirspaceToDatabase(String key) {
 		
@@ -91,6 +92,46 @@ public class Airspace {
 		}
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<Aircraft> getAircrafts() {
+		return aircrafts;
+	}
+
+	public void setAircrafts(List<Aircraft> aircrafts) {
+		this.aircrafts = aircrafts;
+	}
+
+	public List<Airspace> getNeighbours() {
+		return neighbours;
+	}
+
+	public void setNeighbours(List<Airspace> neighbours) {
+		this.neighbours = neighbours;
+	}
+
+	public WeatherOracle getWeatherOrcale() {
+		return weatherOrcale;
+	}
+
+	public void setWeatherOrcale(WeatherOracle weatherOrcale) {
+		this.weatherOrcale = weatherOrcale;
+	}
+
+	public Controller getController() {
+		return controller;
+	}
+
+	public void setController(Controller controller) {
+		this.controller = controller;
+	}
+
 	public boolean removeAircraft(Aircraft aircraft) {
 		return this.aircrafts.remove(aircraft);
 	}

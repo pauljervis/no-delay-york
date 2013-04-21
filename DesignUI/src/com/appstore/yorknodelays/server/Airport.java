@@ -1,5 +1,6 @@
 package com.appstore.yorknodelays.server;
 
+import java.util.Date;
 import java.util.List;
 
 import com.google.appengine.api.datastore.DatastoreService;
@@ -19,6 +20,8 @@ public class Airport {
 	private String threeCode;		// Three character Airport Identifier
 	private String fourCode;		// Four character Airport Identifier
 	private boolean active;
+	private Airspace airspace;
+	private Runway freeRunway;
 	
 	
 	public boolean addAirportToDatabase(String key) {
@@ -122,6 +125,62 @@ public class Airport {
 	}
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public void stepSimulator(int currentTime, int timeStep) {
+		// TODO Auto-generated method stub
+		for (Airline a : airline) {
+			for (Schedule s : a.getSchedules()) {
+				for (Flight f : s.getFlights()) {
+					if (!f.getOnRoute()) {
+						if (f.getDeparture().equals(this)) {
+							if (leavesNow(f.getDeparturedate())) {
+								// TODO Check that the checklists for the flight are OK
+								
+								// Check if there is a free runway
+								if (isFreeRunway()) {
+									Runway r = getFreeRunway();
+									Aircraft ac = f.getAircraft(); 
+									r.addPlane(ac, r.getTaxiDistance() / ac.getTaxiSpeed());
+									airspace.getController().taxi(ac, r);
+									f.setOnRoute(true);
+									ac.setState(Aircraft.aircaftState.taxi);
+								} else {
+									// TODO Generate warning of busy airport
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
+	}
+
+	private Runway getFreeRunway() {
+		// TODO Auto-generated method stub
+		return freeRunway;
+	}
+
+	private boolean isFreeRunway() {
+
+		for (Runway r : runway) {
+			if (!r.isInUse()) {
+				if (r.isHeld() && r.getAirline().equals(airline)) {
+					freeRunway = r;
+					return true;
+				} else if (!r.isHeld()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private boolean leavesNow(Date departuredate) {
+		// TODO Compare a Date with seconds??
+		
+		return false;
 	}
 	
 	
