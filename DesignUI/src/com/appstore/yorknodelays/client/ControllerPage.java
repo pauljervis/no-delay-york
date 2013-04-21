@@ -13,10 +13,14 @@ import java.util.List;
 import com.appstore.yorknodelays.shared.Flight;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import com.sencha.gxt.data.client.editor.ListStoreEditor;
 import com.sencha.gxt.data.shared.ListStore;
@@ -41,7 +45,7 @@ import com.sencha.gxt.explorer.client.model.Example.Detail;*/
 public class ControllerPage implements EntryPoint, IsWidget {
 	
 	private static final FlightProperties props = GWT.create(FlightProperties.class);
-	
+	private VerticalPanel vp;
 	private Label Label;
 	
 /* TextField name = new TextField();
@@ -91,6 +95,17 @@ public class ControllerPage implements EntryPoint, IsWidget {
 	    
 	    grid.setWidth(382);
 	    grid.setHeight(200);
+	
+	    Button backButton = new Button("Back");
+	    container.add(backButton);
+	    		
+	    backButton.addClickHandler(new ClickHandler() {
+	    	public void onClick(ClickEvent event) {
+	    		Login loginPage = GWT.create(Login.class);
+    			vp.clear();
+	   			vp.add(loginPage.asWidget());
+	   		}
+	    });
 	     
 	    FieldLabel flightContainer = new FieldLabel();
 	    flightContainer.setText("Flights");

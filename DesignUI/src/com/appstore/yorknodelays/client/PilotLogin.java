@@ -18,6 +18,8 @@ import java.util.Date;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -25,6 +27,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat.PredefinedFormat;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -190,6 +193,7 @@ public class PilotLogin implements EntryPoint {
 	    ETA.setAllowBlank(false);
 	    ETA.setEmptyText("");
 	    
+	    Button backButton = new Button("Back");
 	    
 		p2.add(new FieldLabel(localWeather, "Local Weather:"), new VerticalLayoutData(1, -1));
 		p2.add(new FieldLabel(DestinationWeather, "Destination Weather:"), new VerticalLayoutData(1, -1));
@@ -199,7 +203,15 @@ public class PilotLogin implements EntryPoint {
 		p2.add(new FieldLabel(Altitudes, "Altitudes:"), new VerticalLayoutData(1, -1));
 		p2.add(new FieldLabel(ETD, "ETD:"), new VerticalLayoutData(1, -1));
 		p2.add(new FieldLabel(ETA, "ETA:"), new VerticalLayoutData(1, -1));
+		p2.add(backButton);
 		
+		backButton.addClickHandler(new ClickHandler() {
+	    	public void onClick(ClickEvent event) {
+	    		Login loginPage = GWT.create(Login.class);
+		   		vp.clear();
+		   		vp.add(loginPage.asWidget());
+		    }
+	    });
 		 
 		 
 		 panel.add(p2);

@@ -19,6 +19,8 @@ import java.util.Date;
 import com.appstore.yorknodelays.shared.Flight;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -26,6 +28,7 @@ import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.NumberFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.i18n.shared.DateTimeFormat.PredefinedFormat;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -144,7 +147,18 @@ public class DispatcherPage implements EntryPoint, IsWidget {
 	    Origin.setEmptyText("");
 	    p.add(new FieldLabel(Origin, "Origin:"), new VerticalLayoutData(1, -1));
 	    p.add(new FieldLabel(Destination, "or Destination:"), new VerticalLayoutData(1, -1));
-	 
+	    
+	    
+	    Button backButton = new Button("Back");
+	    panel.addButton(backButton);
+	    		
+	    backButton.addClickHandler(new ClickHandler() {
+	    	public void onClick(ClickEvent event) {
+	    	Login loginPage = GWT.create(Login.class);
+	    	vp.clear();
+	   		vp.add(loginPage.asWidget());
+	   		}
+	    });
 	
 	    // Search Button
 	    
