@@ -100,7 +100,7 @@ public class Airspace {
 		int warning = weatherOrcale.getStormWarning(location, size);
 		for (Aircraft a : aircrafts) {
 			a.stepSimulator(currentTime, timeStep);
-			a.sendStormWarning(warning);
+			a.setStormWarning(warning);
 			if (!aircraftInArea(a)) {
 				// Tell the neighbours to look for new airplane
 				for (Airspace n : neighbours) {
@@ -108,14 +108,36 @@ public class Airspace {
 				}
 			}
 		}
-		preditcConflicts();
+		detectConflicts();
 		
 	}
 	
-	private void preditcConflicts() {
-		// TODO Auto-generated method stub
+	/*
+	 * A conflict is defined if to planes are closer than 4 nmi
+	 */
+	private void detectConflicts() {
 		
+		for (int a = 0; a < aircrafts.size(); a++) {
+			if (aircraftInArea(aircrafts.get(a))) {
+				for (int b = a + 1; b < aircrafts.size(); b++) {
+					if (aircraftInArea(aircrafts.get(b))) {
+						if (inProximity(aircrafts.get(a).getLocation(), aircrafts.get(b).getLocation()))
+		                     aircrafts.get(a).setConflict(true);
+					}
+			    }
+			}
+		}                    
 	}
+	
+	private boolean inProximity(Location locationA, Location locationB) {
+		
+		// TODO get coordinate difference in miles
+		double latDiff = locationA.getLatitude() - locationB.getLatitude();
+		double longDiff = locationA.getLongitude() - locationB.getLongitude();
+		float square_dist =(float)(latDiff * latDiff + longDiff * longDiff);
+		return square_dist <= 16;		// TODO Express 16 (4NMi ^2 ) as a parameter
+	}
+
 	private boolean aircraftInArea(Aircraft a) {
 		// TODO Add coordinates and miles :O
 		if (a.getLocation().getLatitude() < location.getLatitude() ||  a.getLocation().getLongitude() < location.getLongitude()) {
