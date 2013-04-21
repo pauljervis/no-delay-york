@@ -17,6 +17,7 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 		GreetingService {
 
 	public String greetServer(String input) throws IllegalArgumentException {
+		
 		// Verify that the input is valid. 
 		if (!FieldVerifier.isValidName(input)) {
 			// If the input is not valid, throw an IllegalArgumentException back to
@@ -24,6 +25,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 			throw new IllegalArgumentException(
 					"Name must be at least 4 characters long");
 		}
+		
+		Airport airport = new Airport("character", 43);
+		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+		Entity port = new Entity("Port");
+		ds.put(port);
 		
 		String serverInfo = getServletContext().getServerInfo();
 		String userAgent = getThreadLocalRequest().getHeader("User-Agent");

@@ -1,11 +1,7 @@
 package org.yorkdelayfree.test.client;
 
-import org.yorkdelayfree.test.server.Airport;
 import org.yorkdelayfree.test.shared.FieldVerifier;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -44,12 +40,6 @@ public class Test implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
-
-		Airport airport = new Airport("character", 43);
-		DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
-		Entity port = new Entity("Port");
-		port.setProperty("airportStuff", airport);
-		ds.put(port);
 
 		final Button sendButton = new Button("Send");
 		final TextBox nameField = new TextBox();
