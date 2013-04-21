@@ -8,7 +8,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>org.yorkdelayfree.test.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>com.appstore.yorknodelays.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
@@ -18,7 +18,7 @@
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>DesignUI.html</welcome-file>
+    <welcome-file>Login.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
