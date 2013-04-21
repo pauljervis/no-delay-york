@@ -1,5 +1,7 @@
 package com.appstore.yorknodelays.server;
 
+import java.util.List;
+
 public class Route {
 
 	private String name;
@@ -12,7 +14,7 @@ public class Route {
 	private Airport destinationAirport;
 	private Gate destinationGate;
 	private Weather weather;
-	private Airspace airspaceIntersected;
+	private List<Airspace> airspaceIntersected;
 	private boolean active;
 	
 	public void setName(String name)					{ this.name = name; }
